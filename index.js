@@ -47,27 +47,23 @@ inquirer
       name: 'office',
       message: 'What is the employee office number?',
     },
-    {
-      type: 'list',
-      name: 'choice1',
-      message: 'Would you like an engineer or an intern?',
-      choices: ['Engineer', 'Intern', 'Finish Team Build'],
-      "engineer": function (answers) {
-        if (answers.choice1 === 'Engineer') {
-           inquirer.prompt([{
-            type: 'input',
-            name: 'engineerName',
-            message: 'Enter engineer name',
-           }])
-        }
-    }
-    },
+   
 
-  ])
+  ]).then(results => {
+    const manager = new Manager (results.manager, results.employeeID, results.email, results.office);
+    console.log(manager)
+
+  })
+
+ 
+
+
+
+
   .then((answers) => {
     const htmlPageContent = generateHTML(answers);
 
-    // fs.writeFile('index.html', htmlPageContent, (err) =>
-    //   err ? console.log(err) : console.log('Successfully created index.html!')
-    // );
+    fs.writeFile('index.html', htmlPageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created index.html!')
+    );
   });
