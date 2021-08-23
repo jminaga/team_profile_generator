@@ -2,34 +2,68 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const generateHTML = (answers) =>
-  `<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${answers.name}</h1>
-    <p class="lead">I am from ${answers.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-    <ul class="list-group">
-      <li class="list-group-item">My GitHub username is ${answers.github}</li>
-      <li class="list-group-item">LinkedIn: ${answers.linkedin}</li>
-    </ul>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Team</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 mb-3 team-heading jumbotron bg-info text-white">
+          <h1 class="text-center">My Team</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="team-area col-12 d-flex justify-content-center">
+          <div class="card employee-card">
+    <div class="card-header">
+        <h2 class="card-title">${answers.managerName}</h2>
+        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: ${answers.employeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${answers.employeeEmail}">${answers.employeeEmail}</a></li>
+            <li class="list-group-item">Office number: ${answers.employeeOffice}</li>
+        </ul>
+    </div>
 </div>
-</body>
-</html>`;
+<div class="card employee-card">
+    <div class="card-header">
+        <h2 class="card-title">${answers.engineerName}</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2">Engineer</i></h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">ID: ${answers.engineerEmployeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${answers.engineerEmail}">${answers.engineerEmail}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${answers.github}" target="_blank" rel="noopener noreferrer">${answers.engineerName}</a></li>
+        </ul>
+    </div>
+</div>
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+`;
 
 inquirer
   .prompt([
     {
       type: 'input',
-      name: 'manager',
+      name: 'managerName',
       message: "What is the Manager's name?",
     },
     {
@@ -39,27 +73,42 @@ inquirer
     },
     {
       type: 'input',
-      name: 'email',
+      name: 'employeeEmail',
       message: 'What is the employee email address?',
     },
     {
       type: 'input',
-      name: 'office',
+      name: 'employeeOffice',
       message: 'What is the employee office number?',
     },
-   
+    {
+      type: 'list',
+      name: 'team',
+      message: 'Would you like an Engineer or an Inter?',
+      choices: ['Engineer', 'Intern', 'Exit'],
+  },
+  {
+    type: 'input',
+    name: 'engineerName',
+    message: "What is the Engineer's name?",
+  },
+  {
+    type: 'input',
+    name: 'engineerEmployeeID',
+    message: "What is the Engineer's ID?",
+  },
+  {
+    type: 'input',
+    name: 'engineerEmail',
+    message: "What is the Engineer's email address?",
+  },
+  {
+    type: 'input',
+    name: 'github',
+    message: "What is the Engineer's Github address?",
+  },
 
-  ]).then(results => {
-    const manager = new Manager (results.manager, results.employeeID, results.email, results.office);
-    console.log(manager)
-
-  })
-
- 
-
-
-
-
+  ])
   .then((answers) => {
     const htmlPageContent = generateHTML(answers);
 

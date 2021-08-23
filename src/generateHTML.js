@@ -1,7 +1,9 @@
-const generateHTML = (answers) => {
 
-  `
-  <!DOCTYPE html>
+
+let generateHtml = (team) => {
+
+  return
+  `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,67 +27,43 @@ const generateHTML = (answers) => {
         <div class="team-area col-12 d-flex justify-content-center">
           <div class="card employee-card">
     <div class="card-header">
-        <h2 class="card-title">Jane</h2>
-        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
+        <h2 class="card-title">${data[0].name}</h2>
+        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${data[0].title}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: 8723</li>
-            <li class="list-group-item">Email: <a href="mailto:jane@company.com">jane@company.com</a></li>
-            <li class="list-group-item">Office number: 1253</li>
+            <li class="list-group-item">ID: ${data[0].employeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${data[0].email}">${data[0].email}</a></li>
+            <li class="list-group-item">Office number: ${data[0].office}</li>
         </ul>
     </div>
 </div>
 <div class="card employee-card">
     <div class="card-header">
-        <h2 class="card-title">Dave</h2>
-        <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
+        <h2 class="card-title">${data[1].name}</h2>
+        <h3 class="card-title"><i class="fas fa-glasses mr-2">${data[1].title}</i></h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: 2456</li>
-            <li class="list-group-item">Email: <a href="mailto:dave@company.com">dave@company.com</a></li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/dave" target="_blank" rel="noopener noreferrer">dave</a></li>
+            <li class="list-group-item">ID: ${data[1].employeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${data[1].email}">${data[1].email}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${data[1].github}" target="_blank" rel="noopener noreferrer">${team[1].name}</a></li>
         </ul>
     </div>
 </div>
-<div class="card employee-card">
-    <div class="card-header">
-        <h2 class="card-title">Pete</h2>
-        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
-    </div>
-    <div class="card-body">
-        <ul class="list-group">
-            <li class="list-group-item">ID: I-007</li>
-            <li class="list-group-item">Email: <a href="mailto:pete@company.com">pete@company.com</a></li>
-            <li class="list-group-item">School: University of Scotland</li>
-        </ul>
-    </div>
-</div>
-,<div class="card employee-card">
-    <div class="card-header">
-        <h2 class="card-title">Pam</h2>
-        <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
-    </div>
-    <div class="card-body">
-        <ul class="list-group">
-            <li class="list-group-item">ID: I-009</li>
-            <li class="list-group-item">Email: <a href="mailto:pam@company.com">pam@company.com</a></li>
-            <li class="list-group-item">School: Portland State University</li>
-        </ul>
-    </div>
-</div>
+
 
         </div>
       </div>
     </div>
   </body>
 </html>
+`
+  }
 
-  `
-}
 
-module.exports = generateHTML;
+
+module.exports = generateHtml;
 
 
 
