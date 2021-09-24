@@ -123,7 +123,7 @@ inquirer
   {
     type: 'input',
     name: 'github',
-    message: "What is the Engineer's Github address?",
+    message: "What is the Engineer's Github username?",
   },
   {
     type: 'list',
