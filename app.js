@@ -1,6 +1,6 @@
 //! Cannot figure out why fs cannot write file descript
 //! Come back and figure out later
-//! Try a simpler approach to turn in
+//! Try a different approach for submission
 
 // Inquirer Application
 

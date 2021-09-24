@@ -16,43 +16,61 @@ const generateHTML = (answers) =>
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 mb-3 team-heading jumbotron bg-info text-white">
-          <h1 class="text-center">My Team</h1>
+        <div class="shadow col-12 mb-2  jumbotron bg-dark text-white">
+          <h1 class="text-center">The Team</h1>
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="row">
-        <div class="team-area col-12 d-flex justify-content-center">
-          <div class="card employee-card">
-    <div class="card-header">
-        <h2 class="card-title">${answers.managerName}</h2>
-        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
-    </div>
-    <div class="card-body">
-        <ul class="list-group">
+        <div class="col-12 d-flex justify-content-center">
+
+          <div class="card shadow">
+          <div class="card-header">
+          <h2 class="card-title">${answers.managerName}</h2>
+          <h3 class="card-title"><i class="fas fa-hat-wizard mr-2"></i>Manager</h3>
+          </div>
+          <div class="card-body">
+          <ul class="list-group">
             <li class="list-group-item">ID: ${answers.employeeID}</li>
             <li class="list-group-item">Email: <a href="mailto:${answers.employeeEmail}">${answers.employeeEmail}</a></li>
             <li class="list-group-item">Office number: ${answers.employeeOffice}</li>
-        </ul>
-    </div>
-</div>
-<div class="card employee-card">
+          </ul>
+          </div>
+          </div>
+
+
+          <div class="card shadow">
+          <div class="card-header">
+            <h2 class="card-title">${answers.engineerName}</h2>
+            <h3 class="card-title"><i class="fas fa-dragon mr-2"></i>Engineer</h3>
+            </div>
+             <div class="card-body">
+            <ul class="list-group">
+            <li class="list-group-item">ID: ${answers.engineerEmployeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${answers.engineerEmail}">${answers.engineerEmail}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${answers.github}">${answers.github}</a></li>
+            </ul>
+          </div>
+          </div>
+
+
+    <div class="card shadow">
     <div class="card-header">
-        <h2 class="card-title">${answers.engineerName}</h2>
-        <h3 class="card-title"><i class="fas fa-glasses mr-2">Engineer</i></h3>
+        <h2 class="card-title">${answers.internName}</h2>
+        <h3 class="card-title"><i class="fas fa-crow mr-2"></i>Intern</i></h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: ${answers.engineerEmployeeID}</li>
-            <li class="list-group-item">Email: <a href="mailto:${answers.engineerEmail}">${answers.engineerEmail}</a></li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${answers.github}" target="_blank" rel="noopener noreferrer">${answers.engineerName}</a></li>
+            <li class="list-group-item">ID: ${answers.internEmployeeID}</li>
+            <li class="list-group-item">Email: <a href="mailto:${answers.internEmail}">${answers.internEmail}</a></li>
+            <li class="list-group-item">School: ${answers.school}</li>
         </ul>
     </div>
 </div>
 
 
-        </div>
+
       </div>
     </div>
   </body>
@@ -84,7 +102,7 @@ inquirer
     {
       type: 'list',
       name: 'team',
-      message: 'Would you like an Engineer or an Inter?',
+      message: 'Would you like an Engineer or an Intern?',
       choices: ['Engineer', 'Intern', 'Exit'],
   },
   {
@@ -107,6 +125,32 @@ inquirer
     name: 'github',
     message: "What is the Engineer's Github address?",
   },
+  {
+    type: 'list',
+    name: 'team2',
+    message: 'Would you like an Engineer or an Intern?',
+    choices: ['Engineer', 'Intern', 'Exit'],
+},
+{
+  type: 'input',
+  name: 'internName',
+  message: "What is the intern's name?",
+},
+{
+  type: 'input',
+  name: 'internEmployeeID',
+  message: "What is the intern's ID?",
+},
+{
+  type: 'input',
+  name: 'internEmail',
+  message: "What is the intern's email address?",
+},
+{
+  type: 'input',
+  name: 'school',
+  message: "What school does the intern attend?",
+},
 
   ])
   .then((answers) => {
@@ -116,3 +160,6 @@ inquirer
       err ? console.log(err) : console.log('Successfully created index.html!')
     );
   });
+
+
+
